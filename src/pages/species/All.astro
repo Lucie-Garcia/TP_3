@@ -6,22 +6,12 @@ import Layout from "../../layouts/Layout.astro";
 <Layout>
     <div class="flex flex-col items-center justify-center">
         <h1 class="text-5xl p-3">Navigation</h1>
-        <nav aria-label="Navigation des espèces" class="flex flex-row gap-5">
-            <a
-                href="#adelie"
-                class="menu-item btn btn-secondary [.active]:bg-accent"
-                >adelie</a
-            >
-            <a
-                href="#chinstrap"
-                class="menu-item btn btn-secondary [.active]:bg-accent"
-                >chinstrap</a
-            >
-            <a
-                href="#gentoo"
-                class="menu-item btn btn-secondary [.active]:bg-accent"
-                >gentoo</a
-            >
+        <nav aria-label="Navigation des espèces">
+            <select id="species-anchor" class="select select-secondary">
+                <option value="adelie">Adelie</option>
+                <option value="chinstrap">Chinstrap</option>
+                <option value="gentoo">Gentoo</option>
+            </select>
         </nav>
     </div>
     <div class="carousel w-full my-10">
@@ -86,3 +76,12 @@ import Layout from "../../layouts/Layout.astro";
         </div>
     </div>
 </Layout>
+
+<script>
+    document
+        .querySelector("#species-anchor")
+        ?.addEventListener("change", (event) => {
+            const value = (event.target as HTMLSelectElement).value;
+            location.hash = value;
+        });
+</script>
