@@ -12,18 +12,14 @@ import "../styles/global.css";
     <title>Astro Basics</title>
   </head>
   <body>
-    <nav class="flex flex-row gap-5 p-5 bg-base-200 justify-center">
-      <a href="/" class="menu-item btn btn-primary w-1/5">Accueil</a>
-      <a href="/species/Adelie" class="menu-item btn btn-primary w-1/6"
-        >Adelie</a
-      >
-      <a href="/species/Chinstrap" class="menu-item btn btn-primary w-1/6"
-        >Chinstrap</a
-      >
-      <a href="/species/Gentoo" class="menu-item btn btn-primary w-1/6"
-        >Gentoo</a
-      >
-      <a href="/species/All" class="menu-item btn btn-primary w-1/6">All</a>
+    <nav class="flex justify-center bg-base-200 p-5">
+      <a href="/" class="btn btn-primary mx-2">accueil</a>
+      <select id="species" class="select select-primary" aria-label="Espèce">
+        <option value="Adelie">Adelie</option>
+        <option value="Chinstrap">Chinstrap</option>
+        <option value="Gentoo">Gentoo</option>
+        <option value="All">Toutes les espèces</option>
+      </select>
     </nav>
 
     <slot />
@@ -40,11 +36,12 @@ import "../styles/global.css";
 </style>
 
 <script>
-  const menuItems = document.querySelectorAll(".menu-item");
   const items = document.querySelectorAll(".item");
 
-  console.log("menuItems", menuItems);
-  console.log("items", items);
+  document.querySelector("#species")?.addEventListener("change", (event) => {
+    const value = (event.target as HTMLSelectElement).value;
+    location.pathname = "/species/" + value;
+  });
 
   const observer = new IntersectionObserver(
     (entries) => {
