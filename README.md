@@ -1,7 +1,7 @@
 - URL site WEB :
 - URL Notebook Observable :
-- Nom :
-- Prénom :
+- Nom : GARCIA
+- Prénom : Lucie
 - Nom binome :
 - Prénom binome :
 

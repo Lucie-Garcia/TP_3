@@ -1,0 +1,64 @@
+---
+import GraphicSpecies from "../../components/GraphicSpecies.astro";
+import Layout from "../../layouts/Layout.astro";
+import {
+    Tabs,
+    TabsList,
+    TabsPanel,
+    TabsTab,
+} from "accessible-astro-components";
+---
+
+<Layout>
+    <main class="flex! flex-col! items-center! justify-center!">
+        <h1 class="p-3! text-5xl!">Navigation</h1>
+        <Tabs class="w-full! max-w-5xl! p-5!">
+            <TabsList class="flex! justify-center! gap-5!">
+                <TabsTab
+                    id="tab-adelie"
+                    controls="panel-adelie"
+                    selected
+                    class="btn! btn-secondary! aria-selected:btn-accent!"
+                    >Adelie</TabsTab
+                >
+                <TabsTab
+                    id="tab-chinstrap"
+                    controls="panel-chinstrap"
+                    class="btn! btn-secondary! aria-selected:btn-accent!"
+                    >Chinstrap</TabsTab
+                >
+                <TabsTab
+                    id="tab-gentoo"
+                    controls="panel-gentoo"
+                    class="btn! btn-secondary! aria-selected:btn-accent!"
+                    >Gentoo</TabsTab
+                >
+            </TabsList>
+
+            <TabsPanel
+                id="panel-adelie"
+                labelledby="tab-adelie"
+                selected
+                class="my-10! w-full! rounded-2xl! border! border-base-300! bg-base-200! p-5! items-center! justify-center!"
+            >
+                <GraphicSpecies species="Adelie" />
+            </TabsPanel>
+
+            <TabsPanel
+                id="panel-chinstrap"
+                labelledby="tab-chinstrap"
+                class="my-10! w-full! rounded-2xl! border! border-base-300! bg-base-200! p-5! items-center! justify-center!"
+            >
+                <GraphicSpecies species="Chinstrap" />
+            </TabsPanel>
+
+            <TabsPanel
+                id="panel-gentoo"
+                labelledby="tab-gentoo"
+                class="my-10! w-full! rounded-2xl! border! border-base-300! bg-base-200! p-5! items-center! justify-center!"
+            >
+                <GraphicSpecies species="Gentoo" />
+            </TabsPanel>
+        </Tabs>
+    </main>
+</Layout>
